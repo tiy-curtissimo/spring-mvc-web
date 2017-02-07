@@ -1,0 +1,14 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Edit a Person.</title>
+	</head>
+	<body>
+		<form method="post" th:action="${'/people/' + person.id}">
+			<input type="hidden" name="id" th:value="${person.id}"/>
+			<input placeholder="first name" name="firstName" type="text" th:value="${person.firstName}" />
+			<input placeholder="last name" name="lastName" type="text" th:value="${person.lastName}" />
+			<button type="submit">Just do it. <sup>TM</sup></button>
+		</form>
+	</body>
+</html>

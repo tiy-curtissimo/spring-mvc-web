@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="app" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Get it to Work</title>
+	</head>
+	<body>
+		<h1 th:text="${title}">I am working!</h1>
+		<a th:href="${home}">Home</a>
+		<a href="/people/new">Create a person</a>
+		<p>
+			I have
+			<span th:text="${people.size()}">unknown</span>
+			people.
+		</p>
+		<ul>
+			<li th:each="person : ${people}">
+				<a th:href="${'/people/' + person.id}" th:text="${person.lastName} + ', ' + ${person.firstName}"></a>
+			</li>
+		</ul>
+		<p>
+			<pre><my-silly-component></my-silly-component></pre>
+		</p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+		<script src="/js/app.module.js"></script>
+	</body>
+</html>

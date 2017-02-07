@@ -1,0 +1,12 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Hello, Person.</title>
+	</head>
+	<body>
+		<h1 th:text="${person.id}">The id of the person</h1>
+		<h2 th:text="${person.firstName}">The first name of the person</h2>
+		<h3 th:text="${person.lastName}">The last name of the person</h3>
+		<a th:href="${'/people/' + person.id + '/edit'}">Edit</a>
+	</body>
+</html>
