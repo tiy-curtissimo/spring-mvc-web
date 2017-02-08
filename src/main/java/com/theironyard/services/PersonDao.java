@@ -12,4 +12,6 @@ public interface PersonDao {
 	Person get(Integer id);
 
 	void update(Person person);
+	
+	void deleteById(Integer id);
 }

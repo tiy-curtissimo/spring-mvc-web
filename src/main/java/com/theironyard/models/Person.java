@@ -1,5 +1,6 @@
 package com.theironyard.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,9 +11,13 @@ public class Person {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+
+	@Column(length=1)
+	private String middleInitial;
+
 	private String firstName;
 	private String lastName;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -30,6 +35,12 @@ public class Person {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getMiddleInitial() {
+		return middleInitial;
+	}
+	public void setMiddleInitial(String middleInitial) {
+		this.middleInitial = middleInitial;
 	}
 	
 	

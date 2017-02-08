@@ -1,26 +1,37 @@
 <!doctype html>
-<html ng-app="app" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="common/layout">
 	<head>
-		<title>Get it to Work</title>
-	</head>
+		<title>Home</title>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	</head>
 	<body>
-		<h1 th:text="${title}">I am working!</h1>
-		<a th:href="${home}">Home</a>
-		<a href="/people/new">Create a person</a>
-		<p>
-			I have
-			<span th:text="${people.size()}">unknown</span>
-			people.
-		</p>
-		<ul>
-			<li th:each="person : ${people}">
-				<a th:href="${'/people/' + person.id}" th:text="${person.lastName} + ', ' + ${person.firstName}"></a>
-			</li>
-		</ul>
-		<p>
-			<pre><my-silly-component></my-silly-component></pre>
-		</p>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
-		<script src="/js/app.module.js"></script>
+		<main layout:fragment="content" class="container">
+			<div class="row">
+				<div class="col s12 m6">
+					<div class="card white">
+						<div class="card-content">
+							<span class="card-title">People: <span th:text="${people.size()}"></span></span>
+						</div>
+						<div class="card-action">
+							<a th:href="@{/people}">View Them</a>
+							<a th:href="@{/people/new}">Create a Person</a>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6">
+					<div class="card white">
+						<div class="card-content">
+							<span class="card-title">Products: <span th:text="${products.size()}"></span></span>
+						</div>
+						<div class="card-action">
+							<a th:href="@{/products}">Browse</a>
+							<a th:href="@{/products/new}">Create a Product</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>

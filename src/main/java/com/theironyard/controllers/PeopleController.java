@@ -18,19 +18,24 @@ public class PeopleController {
 		 this.dao = dao;
 	}
 	
+	@RequestMapping("")
+	public String list(Model model) {
+		model.addAttribute("people", dao.getPeople());
+		return "people/list";
+	}
+	
 	@RequestMapping("/new")
-	public String newish() {
+	public String newish(Model model) {
+		model.addAttribute("person", new Person());
 		return "people/new";
 	}
 	
-	// POST /people/{id}
-	@RequestMapping(value="/{id}", method=RequestMethod.POST)
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public String update(Person person) {
 		dao.update(person);
-		return "redirect:/people/" + person.getId();
+		return "redirect:/people";
 	}
 	
-	// GET /people/{id}/edit
 	@RequestMapping(value="/{id}/edit")
 	public String edit(Model model, @PathVariable Integer id) {
 		Person person = dao.get(id);
@@ -41,14 +46,13 @@ public class PeopleController {
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public String create(Person person) {
 		person = dao.insert(person);
-		return "redirect:/people/" + person.getId();
+		return "redirect:/people";
 	}
 	
-	@RequestMapping("/{id}")
-	public String details(Model model, @PathVariable Integer id) {
-		Person person = dao.get(id);
-		model.addAttribute("person", person);
-		return "people/details";
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public String delete(@PathVariable Integer id) {
+		dao.deleteById(id);
+		return "redirect:/people";
 	}
 }
 

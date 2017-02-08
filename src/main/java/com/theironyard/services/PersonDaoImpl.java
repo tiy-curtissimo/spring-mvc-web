@@ -22,7 +22,7 @@ public class PersonDaoImpl implements PersonDao {
 		EntityManager manager = factory.createEntityManager();
 		
 		return manager
-				.createQuery("from Person", Person.class)
+				.createQuery("from Person order by lastName, firstName", Person.class)
 				.getResultList();
 	}
 
@@ -40,15 +40,23 @@ public class PersonDaoImpl implements PersonDao {
 	@Override
 	public Person get(Integer id) {
 		EntityManager manager = factory.createEntityManager();
-		
 		return manager.find(Person.class, id);
-				//.createQuery("from Person where id = " + id, Person.class).getSingleResult();
 	}
 
 	@Override
 	public void update(Person person) {
 		insert(person);
 	}
+
+	@Override
+	public void deleteById(Integer id) {
+		EntityManager manager = factory.createEntityManager();
+
+		manager.getTransaction().begin();
+		Person person = manager.find(Person.class, id);
+		manager.remove(person);
+		manager.getTransaction().commit();
+}
 }
 
 

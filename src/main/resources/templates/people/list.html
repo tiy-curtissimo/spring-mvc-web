@@ -1,0 +1,43 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="common/layout">
+	<head>
+		<title>People</title>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	</head>
+	<body class="white">
+		<main layout:fragment="content" class="container">
+			<div class="row">
+				<div class="s12">
+					<a class="orange-text waves-effect waves-teal btn-flat" th:href="@{/people/new}">Add a new person</a>
+				</div>
+				<table class="bordered">
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="person : ${people}" th:object="${person}">
+							<td th:text="*{firstName}">first name</td>
+							<td th:text="*{lastName}">last name</td>
+							<td>
+								<a class="orange-text waves-effect waves-teal btn-flat" th:href="@{/people/{id}/edit(id=${person.id})}">edit</a>
+							</td>
+							<td>
+								<form method="post" th:action="@{/people/{id}(id=${person.id})}">
+									<input type="hidden" name="_method" value="delete"/>
+									<button class="waves-effect waves-light btn red darken-1">delete</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+		</main>
+	</body>
+</html>
