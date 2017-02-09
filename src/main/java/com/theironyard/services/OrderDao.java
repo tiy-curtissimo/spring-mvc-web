@@ -14,4 +14,6 @@ public interface OrderDao {
 	void update(Order order);
 	
 	void deleteById(Integer id);
+
+	Order createOrder(Integer quantity, Integer customerId, Integer productId);
 }
