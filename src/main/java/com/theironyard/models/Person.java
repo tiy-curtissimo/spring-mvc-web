@@ -1,10 +1,14 @@
 package com.theironyard.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
@@ -18,8 +22,8 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	
-//	@OneToMany(mappedBy="customer")
-//	private List<Order> orders;
+	@OneToMany(mappedBy="customer", fetch=FetchType.EAGER)
+	private List<Order> orders;
 
 	public Integer getId() {
 		return id;
@@ -45,6 +49,10 @@ public class Person {
 	public void setMiddleInitial(String middleInitial) {
 		this.middleInitial = middleInitial;
 	}
-	
-	
+	public List<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 }

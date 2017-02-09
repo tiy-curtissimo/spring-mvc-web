@@ -17,6 +17,7 @@
 						<tr>
 							<th>First Name</th>
 							<th>Last Name</th>
+							<th>Number of Orders</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -25,6 +26,7 @@
 						<tr th:each="person : ${people}" th:object="${person}">
 							<td th:text="*{firstName}">first name</td>
 							<td th:text="*{lastName}">last name</td>
+							<td th:text="*{orders.size()}">orders</td>
 							<td>
 								<a class="orange-text waves-effect waves-teal btn-flat" th:href="@{/people/{id}/edit(id=${person.id})}">edit</a>
 							</td>
