@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 import com.theironyard.models.Person;
 import com.theironyard.models.Product;
 import com.theironyard.services.PersonDao;
-import com.theironyard.services.ProductsDao;
+import com.theironyard.services.ProductDao;
 
 @Component
 public class DataBootstrapper implements ApplicationListener<ContextRefreshedEvent>{
 	private PersonDao peopleDao;
-	private ProductsDao productsDao;
+	private ProductDao productsDao;
 	
-	public DataBootstrapper(PersonDao peopleDao, ProductsDao productsDao) {
+	public DataBootstrapper(PersonDao peopleDao, ProductDao productsDao) {
 		this.peopleDao = peopleDao;
 		this.productsDao = productsDao;
 	}

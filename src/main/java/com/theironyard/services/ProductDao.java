@@ -4,12 +4,14 @@ import java.util.List;
 
 import com.theironyard.models.Product;
 
-public interface ProductsDao {
+public interface ProductDao {
 	List<Product> getProducts();
 	
 	Product insert(Product product);
 	
-	Product get(Integer id);
+	Product getById(Integer id);
 
 	void update(Product product);
+	
+	void deleteById(Integer id);
 }

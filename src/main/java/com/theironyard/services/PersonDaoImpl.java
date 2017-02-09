@@ -56,7 +56,7 @@ public class PersonDaoImpl implements PersonDao {
 		Person person = manager.find(Person.class, id);
 		manager.remove(person);
 		manager.getTransaction().commit();
-}
+	}
 }
 
 

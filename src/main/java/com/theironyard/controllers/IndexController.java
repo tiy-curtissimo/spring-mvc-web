@@ -5,14 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.theironyard.services.PersonDao;
-import com.theironyard.services.ProductsDao;
+import com.theironyard.services.ProductDao;
 
 @Controller
 public class IndexController {
 	private PersonDao peopleDao;
-	private ProductsDao productsDao;
+	private ProductDao productsDao;
 	
-	public IndexController(PersonDao peopleDao, ProductsDao productsDao) {
+	public IndexController(PersonDao peopleDao, ProductDao productsDao) {
 		this.peopleDao = peopleDao;
 		this.productsDao = productsDao;
 	}

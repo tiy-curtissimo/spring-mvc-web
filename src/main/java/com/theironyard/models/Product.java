@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
@@ -19,12 +17,9 @@ public class Product {
 	@Column(name="PRODUCT_NAME", length=200)
 	private String name;
 	
-	@Lob
+	@Column(length=4000)
 	private String description;
 	
-//	@OneToMany(mappedBy="product")
-//	private List<Order> orders;
-
 	private Double price;
 
 	public Integer getId() {
