@@ -9,7 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.stereotype.Service;
 
-import com.theironyard.models.Person;
 import com.theironyard.models.Product;
 
 @Service
