@@ -5,3 +5,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+security:
+  user:
+    password: password
+ 
