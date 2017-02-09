@@ -6,6 +6,7 @@ import com.theironyard.controllers.api.PeopleController;
 
 public class JerseyResourceConfig extends ResourceConfig {
 	public JerseyResourceConfig() {
-		register(PeopleController.class);
+		packages("com.theironyard.controllers.api");
+//		register(PeopleController.class);
 	}
 }
