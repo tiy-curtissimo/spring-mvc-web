@@ -1,10 +1,13 @@
 package com.theironyard.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
@@ -17,6 +20,9 @@ public class Person {
 
 	private String firstName;
 	private String lastName;
+	
+//	@OneToMany(mappedBy="customer")
+//	private List<Order> orders;
 
 	public Integer getId() {
 		return id;

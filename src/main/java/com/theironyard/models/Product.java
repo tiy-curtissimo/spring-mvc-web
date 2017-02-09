@@ -1,11 +1,14 @@
 package com.theironyard.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
@@ -19,6 +22,9 @@ public class Product {
 	@Lob
 	private String description;
 	
+//	@OneToMany(mappedBy="product")
+//	private List<Order> orders;
+
 	private Double price;
 
 	public Integer getId() {

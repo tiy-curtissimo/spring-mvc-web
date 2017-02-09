@@ -1,16 +1,16 @@
 package com.theironyard;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.hamcrest.CoreMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -57,7 +57,7 @@ public class PeopleControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentType("text/html;charset=UTF-8"))
 			.andExpect(view().name("people/list"))
-			.andExpect(model().attribute("people", people));
+			.andExpect(model().attribute("people", is(people)));
     }
     
     @Test
@@ -67,6 +67,9 @@ public class PeopleControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentType("text/html;charset=UTF-8"))
 			.andExpect(view().name("people/list"))
-			.andExpect(model().attribute("people", null));
+			.andExpect(model().attribute("people", is(nullValue())));
     }
 }
+
+
+
