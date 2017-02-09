@@ -2,6 +2,8 @@ package com.theironyard.controllers.api;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.theironyard.config.PATCH;
 import com.theironyard.models.Person;
 import com.theironyard.services.PersonDao;
+import com.theironyard.view.models.PersonDto;
 
 @Component("MikeIsAlwaysRight")
 @Path("/people")
@@ -32,8 +35,12 @@ public class PeopleController {
 	}
 	
 	@GET
-	public List<Person> list() {
-		return dao.getPeople();
+	public List<PersonDto> list() {
+		List<PersonDto> peopleDtos = new ArrayList<PersonDto>();
+		for (Person person : dao.getPeople()) {
+			peopleDtos.add(new PersonDto(person));
+		}
+		return peopleDtos;
 	}
 	
 	@GET
