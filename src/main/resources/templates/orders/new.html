@@ -13,14 +13,14 @@
 							<label for="quantity">Quantity</label>
 						</div>
 						<div class="input-field col s12">
-							<select name="customerId">
+							<select name="customer.id">
 								<option value="" disabled="disabled" selected="selected">Choose a customer</option>
 								<option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.lastName + ', ' + customer.firstName}">last name, first name</option>
 							</select>
 							<label>Customer</label>
 						</div>
 						<div class="input-field col s12">
-							<select name="productId">
+							<select name="product.id">
 								<option value="" disabled="disabled" selected="selected">Choose a product</option>
 								<option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}">product name</option>
 							</select>

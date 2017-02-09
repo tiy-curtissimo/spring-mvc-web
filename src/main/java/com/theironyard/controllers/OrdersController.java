@@ -33,8 +33,16 @@ public class OrdersController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String create(@RequestParam Integer quantity, @RequestParam Integer customerId, @RequestParam Integer productId) {
-		orderDao.createOrder(quantity, customerId, productId);
+	public String create(Order order) {
+		orderDao.update(order);
 		return "redirect:/";
 	}
 }
+
+
+
+
+
+
+
+
